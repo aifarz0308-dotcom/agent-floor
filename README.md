@@ -14,10 +14,18 @@ Works with **Claude Code**, **Codex**, **Cursor**, and anything else that can se
 
 ## Quick start
 
+Agent Floor is not on the npm registry yet, so install it from source. You need Node.js 20 or newer.
+
 ```bash
-npm i -g agent-floor
+git clone https://github.com/develop212/agent-floor
+cd agent-floor
+npm install
+npm run build
+npm link                          # puts `agent-floor` on your PATH
 agent-floor setup claude --write
 ```
+
+Keep the clone somewhere permanent. The hooks call `bin/agent-floor.mjs` by its absolute path, so moving or deleting the folder breaks them; if you move it, run `agent-floor setup claude --write` again. To update, `git pull && npm install && npm run build` inside the clone.
 
 That's it. The next time a Claude Code session starts, Agent Floor opens by itself in its own desktop window (no browser). Close the window and it keeps listening from the menu bar; use **Quit (pause auto-open for 6 hours)** in the menu bar icon when you want quiet. Run `agent-floor` any time to open it yourself.
 
